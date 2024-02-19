@@ -1,9 +1,18 @@
-import { BottomNavigation, BottomNavigationAction } from "@mui/material";
+import {
+  BottomNavigation,
+  BottomNavigationAction,
+  Box,
+  SxProps,
+  Theme,
+} from "@mui/material";
 import { useEffect, useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
-import { NavigationPages } from "../../utils/navigationPages.enum";
+import {
+  NavigationPages,
+  NavigationPagesLabels,
+} from "../../utils/navigationPages.enum";
 
-export const BottomBar = () => {
+export const BottomBar = ({ sx }: { sx?: SxProps<Theme> }) => {
   const navigate = useNavigate();
   const navigation = useLocation();
   const [value, setValue] = useState<String>();
@@ -12,6 +21,7 @@ export const BottomBar = () => {
   }, [navigation]);
   return (
     <BottomNavigation
+      sx={{ ...sx }}
       showLabels
       value={value}
       onChange={(_, value) => {
@@ -20,15 +30,15 @@ export const BottomBar = () => {
     >
       <BottomNavigationAction
         value={`${NavigationPages["book-list"]}`}
-        label="Book list"
+        label={NavigationPagesLabels[`${NavigationPages["book-list"]}`]}
       />
       <BottomNavigationAction
         value={`${NavigationPages["feed"]}`}
-        label="Feed"
+        label={NavigationPagesLabels[`${NavigationPages["feed"]}`]}
       />
       <BottomNavigationAction
         value={`${NavigationPages["profile"]}`}
-        label="Profile"
+        label={NavigationPagesLabels[`${NavigationPages["profile"]}`]}
       />
     </BottomNavigation>
   );
