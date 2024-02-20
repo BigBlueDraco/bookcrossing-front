@@ -21,7 +21,7 @@ export const Layout: React.FC = () => {
         </Container>
       </Grid>
       <Grid item>
-        <BottomBar sx={{ width: "100vw" }} />
+        <BottomBar />
       </Grid>
     </Grid>
   );

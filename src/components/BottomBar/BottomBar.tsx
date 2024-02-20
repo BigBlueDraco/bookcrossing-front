@@ -1,9 +1,7 @@
 import {
   BottomNavigation,
   BottomNavigationAction,
-  Box,
-  SxProps,
-  Theme,
+  Container,
 } from "@mui/material";
 import { useEffect, useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
@@ -12,7 +10,7 @@ import {
   NavigationPagesLabels,
 } from "../../utils/navigationPages.enum";
 
-export const BottomBar = ({ sx }: { sx?: SxProps<Theme> }) => {
+export const BottomBar = () => {
   const navigate = useNavigate();
   const navigation = useLocation();
   const [value, setValue] = useState<String>();
@@ -20,26 +18,27 @@ export const BottomBar = ({ sx }: { sx?: SxProps<Theme> }) => {
     setValue(navigation.pathname.split("/")[1]);
   }, [navigation]);
   return (
-    <BottomNavigation
-      sx={{ ...sx }}
-      showLabels
-      value={value}
-      onChange={(_, value) => {
-        navigate(value);
-      }}
-    >
-      <BottomNavigationAction
-        value={`${NavigationPages["book-list"]}`}
-        label={NavigationPagesLabels[`${NavigationPages["book-list"]}`]}
-      />
-      <BottomNavigationAction
-        value={`${NavigationPages["feed"]}`}
-        label={NavigationPagesLabels[`${NavigationPages["feed"]}`]}
-      />
-      <BottomNavigationAction
-        value={`${NavigationPages["profile"]}`}
-        label={NavigationPagesLabels[`${NavigationPages["profile"]}`]}
-      />
-    </BottomNavigation>
+    <Container sx={{ width: "100vw" }}>
+      <BottomNavigation
+        showLabels
+        value={value}
+        onChange={(_, value) => {
+          navigate(value);
+        }}
+      >
+        <BottomNavigationAction
+          value={`${NavigationPages["book-list"]}`}
+          label={NavigationPagesLabels[`${NavigationPages["book-list"]}`]}
+        />
+        <BottomNavigationAction
+          value={`${NavigationPages["feed"]}`}
+          label={NavigationPagesLabels[`${NavigationPages["feed"]}`]}
+        />
+        <BottomNavigationAction
+          value={`${NavigationPages["profile"]}`}
+          label={NavigationPagesLabels[`${NavigationPages["profile"]}`]}
+        />
+      </BottomNavigation>
+    </Container>
   );
 };
