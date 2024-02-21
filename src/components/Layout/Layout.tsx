@@ -2,6 +2,7 @@ import { Container, Grid } from "@mui/material";
 import { Outlet } from "react-router-dom";
 import { BottomBar } from "../BottomBar/BottomBar";
 import { Header } from "../Header/Header";
+import { BookCard } from "../BookCard/BookCard";
 
 export const Layout: React.FC = () => {
   return (
@@ -17,6 +18,11 @@ export const Layout: React.FC = () => {
             gridTemplateRows: "auto 1fr auto",
           }}
         >
+          <BookCard
+            img="https://covers.openlibrary.org/b/id/916570.jpg"
+            title="Title"
+            description="Test Desc"
+          />
           <Outlet />
         </Container>
       </Grid>

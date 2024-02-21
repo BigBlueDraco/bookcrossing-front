@@ -9,7 +9,7 @@ import {
 } from "@mui/material";
 interface BookCardProps {
   img: string;
-  description?: string;
+  description: string;
   title: string;
 }
 
@@ -19,7 +19,7 @@ export const BookCard = ({
   title = "",
 }: BookCardProps) => {
   return (
-    <Card sx={{ maxWidth: 345 }}>
+    <Card sx={{ maxWidth: 345, maxHeight: 520, minHeight: 520 }}>
       <CardHeader
         action={
           <IconButton aria-label="settings">
@@ -28,7 +28,13 @@ export const BookCard = ({
         }
         title={title}
       />
-      <CardMedia component="img" height="194" image={img} alt="Paella dish" />
+      <CardMedia
+        component="img"
+        height="194px"
+        sx={{ maxWidth: 115 }}
+        image={img}
+        alt="Paella dish"
+      />
       <CardContent>
         <Typography variant="body2" color="text.secondary">
           {description}
