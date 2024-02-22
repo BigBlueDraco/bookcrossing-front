@@ -1,11 +1,11 @@
 import { AppBar, Box, Container, Toolbar, Typography } from "@mui/material";
 import React, { useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
-import { NavigationPagesLabels } from "../../utils/navigationPages.enum";
+import { NavigationPagesLabels } from "@utils/navigationPages.enum";
 
 export const Header: React.FC = () => {
   const navigation = useLocation();
-  const [value, setValue] = useState<String>("");
+  const [value, setValue] = useState<string>("");
   useEffect(() => {
     setValue(NavigationPagesLabels[navigation.pathname.split("/")[1]]);
   }, [navigation]);
